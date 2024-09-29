@@ -69,8 +69,9 @@ public class PersonServiceImpl implements PersonService{
         }
 
         Page<Person> people = PageableExecutionUtils.getPage(
-                mongoTemplate.find(query, Person.class
-                ), pageable, () -> mongoTemplate.count(query.skip(0).limit(0),Person.class));
+                mongoTemplate.find(query, Person.class),
+                pageable,
+                () -> mongoTemplate.count(query.skip(0).limit(0),Person.class));
         return people;
     }
 
